@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS order (
+  id SERIAL PRIMARY KEY,
+  token VARCHAR,
+  order_by VARCHAR,
+  status VARCHAR,
+  price VARCHAR,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
