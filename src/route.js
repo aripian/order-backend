@@ -7,7 +7,7 @@ const routes = (app) => {
     const data = req.body;
 
     main.insertOrder(data, (cb) => {
-      res.send(cb.res);
+      res.send(cb.data); // let frontend handle payment
     });
   });
 

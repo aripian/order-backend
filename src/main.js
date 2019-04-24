@@ -1,11 +1,9 @@
 // import Request from 'request';
-import { logger } from './utils/logger';
 import axios from 'axios';
+import { logger } from './utils/logger';
 import db from './utils/db';
 import Q from './queries';
 import conf from '../config/misc';
-
-const paymentURL = '';
 
 const genToken = (length) => {
   let text = '';
@@ -31,7 +29,20 @@ const insertOrder = (data, cb) => {
       logger.error(err.stack);
       res.json({ error: 'Error inserting order data' });
     }
-    //if success then proceed to payments
+    // if success then proceed to payments
+    axios({
+      url: conf.paymentURL,
+      method: 'POST',
+      data: {
+        id: res.rows[0],
+      },
+    }).then((resp) => {
+      if (resp) {
+        cb({
+          data: resp.data,
+        });
+      }
+    });
   });
 };
 
