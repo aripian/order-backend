@@ -14,3 +14,4 @@ The table schema is inside the db/schema folder
 
 to run, do a request as follows:
 
+![alt text](https://i.imgur.com/qpy3Adm.png)
